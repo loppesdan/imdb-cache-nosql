@@ -8,7 +8,8 @@ class IMDBRepository  implements IRepository{
 
     public function getFilmById($id) {
         $film = DB::table('title')
-                        ->select('title.id', 'title.title', 'movie_info.id', 'movie_info.info_type_id', 'movie_info.info', 'cast_info.note', 'role_type.role', 'role_type.id', 'name.id', 'name.name')
+                        ->select('title.id', 'title.title', 'movie_info.id', 'movie_info.info_type_id', 'movie_info.info', 
+                        'cast_info.note', 'role_type.role', 'role_type.id', 'name.id', 'name.name')
                         ->leftJoin('movie_info', 'title.id', '=', 'movie_info.movie_id')
                         ->leftJoin('cast_info', 'title.id', '=', 'cast_info.movie_id')
                         ->leftJoin('role_type', 'cast_info.role_id', '=', 'role_type.id')
